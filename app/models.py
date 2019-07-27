@@ -7,4 +7,4 @@ class Employee(db.Model):
     password = db.Column(db.String(64))
 
     def __repr__(self):
-        return '<Employee {}'>.format(self.employee_id)
+        return '<Employee {}>'.format(self.employee_id)
