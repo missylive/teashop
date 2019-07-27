@@ -1,7 +1,9 @@
 from app import db
+from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-class Employee(db.Model):
+class Employee(UserMixin, db.Model):
     employee_id = db.Column(db.Integer, primary_key=True)
     employee_name = db.Column(db.String(128), index=True, unique=True)
     phone = db.Column(db.String(64), index=True, unique=True)
@@ -15,3 +17,7 @@ class Employee(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+@login.user_loader
+def load_user(employee_id):
+    return Employee.query.get(int(id))
