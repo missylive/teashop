@@ -23,41 +23,34 @@
                 <div
                     class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="/index">Home</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="menu.html">Menu</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">About Us</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact Us</a></li>
-						{% if current_user.is_anonymous %}
-						<li class="nav-item" role="presentation"><a class="nav-link" href="/login">Log In</a>
-						{% else %}
-						<li class="nav-item" role="presentation"><a class="nav-link" href="/mgmt">Mgmt.</a>
-						<li class="nav-item" role="presentation"><a class="nav-link" href="/logout">Log Out</a>
-						{% endif %}
                     </ul><a href="#">0 item</a></div>
     </div>
     </nav>
     </div>
 	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul>
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	{% endwith %}
-	{% block content %}{% endblock %}
-    <div class="footer-basic">
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+        <footer></footer>
         <footer>
             <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="index.html">Home</a></li>
+                <li class="list-inline-item"><a href="menu.html">Menu</a></li>
+                <li class="list-inline-item"><a href="#">About Us</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="login.html">Login</a></li>
             </ul>
-            <p class="copyright">Company Name © 2017</p>
+            <p class="copyright">Tea Shop © 2019</p>
         </footer>
     </div>
     <div class="photo-gallery"></div>
