@@ -15,8 +15,8 @@ def login():
         return redirect('/index')
     form = LoginForm()
     if form.validate_on_submit():
-        employee = Employee.query.filter_by(username=form.username.data).first()
-        if employee is None or not user.check_password(form.password.data):
+        employee = Employee.query.filter_by(employee_id=form.username.data).first()
+        if employee is None or not employee.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect('/login')
         login_user(employee)
@@ -24,3 +24,8 @@ def login():
             form.username.data))
         return redirect('/index')
     return render_template('login.html', title='Login', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/index')

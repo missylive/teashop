@@ -8,6 +8,7 @@ class Employee(UserMixin, db.Model):
     employee_name = db.Column(db.String(128), index=True, unique=True)
     phone = db.Column(db.String(64), index=True, unique=True)
     password = db.Column(db.String(64))
+    password_hash = db.Column(db.String(128))
 
     def __repr__(self):
         return '<Employee {}>'.format(self.employee_id)
@@ -18,6 +19,9 @@ class Employee(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def get_id(self):
+        return (self.employee_id)
+
 @login.user_loader
 def load_user(employee_id):
-    return Employee.query.get(int(id))
+    return Employee.query.get(int(employee_id))
