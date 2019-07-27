@@ -25,3 +25,14 @@ class Employee(UserMixin, db.Model):
 @login.user_loader
 def load_user(employee_id):
     return Employee.query.get(int(employee_id))
+
+class MenuItem(db.Model):
+    menu_item_number = db.Column(db.Integer, primary_key = True)
+    item_name = db.Column(db.String(128), index=True, unique=True)
+    price = db.Column(db.Numeric)
+    drinkstatus = db.Column(db.Boolean)
+    drink_type = db.Column(db.String(128))
+    drink_description = db.Column(db.String(128))
+
+    def __repr__(self):
+        return '<Menu Item {}>'.format(self.menu_item_number)
