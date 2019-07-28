@@ -36,3 +36,12 @@ class MenuItem(db.Model):
 
     def __repr__(self):
         return '<Menu Item {}>'.format(self.menu_item_number)
+
+class AddOnItem(db.Model):
+    add_on_number = db.Column(db.Integer, primary_key = True)
+    food_description = db.Column(db.String(128))
+    price = db.Column(db.Numeric)
+    foodstatus = db.Column(db.Boolean)
+
+    def __repr__(self):
+        return '<Add On Item {}>'.format(self.add_on_number)

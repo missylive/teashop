@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+  
+{% block content %}
+<div>
+        <div class="container"><img src="static/img/grass.jpg" height="80" width="100%" />
+            <h1>Menu</h1>
+        </div>
+        <div class="container">
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Tab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Tab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                        <p></p>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <p>Content for tab 2.</p>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <p>Content for tab 3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Add On Item</th>
+							<th>Price</th>
+						</tr>
+						</thead>
+					{% for addon_item in addon_list %}
+					<tr>
+					<td><strong>{{ addon_item.food_description }}</strong></td>
+					<td>{{ addon_item.price }}</td>
+					</tr>
+					{% endfor %}
+					</table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

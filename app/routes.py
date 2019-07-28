@@ -3,7 +3,7 @@ from app import app
 from app import db
 from app.forms import LoginForm
 from flask_login import current_user, login_user
-from app.models import Employee, MenuItem
+from app.models import Employee, MenuItem, AddOnItem
 
 @app.route('/')
 @app.route('/index')
@@ -13,6 +13,11 @@ def index():
 def menu():
     item_list = MenuItem.query.all()
     return render_template('menu.html', title='Menu', item_list=item_list)
+@app.route('/addonitem')
+def addonitem():
+    addon_list = AddOnItem.query.all()
+    return render_template('addon.html', title='Menu', addon_list=addon_list)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
