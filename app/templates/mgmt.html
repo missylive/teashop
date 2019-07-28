@@ -33,58 +33,6 @@
                 </td>
             </tr>
 			{% endfor %}
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Cell 5</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>
         </tbody>
     </table>
 </div><div class="container">
@@ -130,69 +78,19 @@
         </thead>
 
         <tbody>
+			{% for addon_item in addon_list %}
             <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Yes</td>
+                <td>{{ addon_item.add_on_number }}</td>
+                <td>{{ addon_item.food_description }}</td>
+				<td></td>
+                <td>{{ addon_item.price }}</td>
+                <td>{{ addon_item.foodstatus }}</td>
                 <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
+    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
 </div>
                 </td>
             </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Yes</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Yes</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Yes</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>Yes</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>            <tr>
-                <td>Cell 1</td>
-                <td>Cell 2</td>
-                <td>Cell 3</td>
-                <td>Cell 4</td>
-                <td>No</td>
-                <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_add_on_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div><div class="container">
