@@ -37,6 +37,8 @@
     </table>
 </div><div class="container">
     <h2>Add A New Menu Item</h2>
+	<form action="" method="post">
+	{{ add_menu_form.hidden_tag() }}
     <table class="table" >
         <thead>
             <tr>
@@ -51,17 +53,17 @@
 
         <tbody>
             <tr>
-                <td><input type="text" placeholder="item number"/></td>
-                <td><input type="text" placeholder="food name"/></td>
-                <td><input type="text" placeholder="drink type"/></td>
-                <td><input type="text" placeholder="ingredients"/></td>
-                <td><input type="text" placeholder="price"/></td>
-                <td><div style="width:90px" ><button type="button">Add item</button></div>
-                </td>
+				<td>{{ add_menu_form.itemnumber(size=24) }}</td>
+                <td>{{ add_menu_form.name(size=24) }}</td>
+                <td>{{ add_menu_form.drinktype(size=24) }}</td>
+                <td>{{ add_menu_form.description(size=24) }}</td>
+                <td>{{ add_menu_form.price(size=24) }}</td>
+                <td>{{ add_menu_form.submit }}</td>
             </tr>
 
         </tbody>
     </table>
+	</form>
 </div><div style="width=80%" class="container">
     <h2>Edit or Delete Add-On Items</h2>
     <table class="table" >
@@ -95,6 +97,8 @@
     </table>
 </div><div class="container">
     <h2>Add An Add-On Item</h2>
+	<form action="" method="post">
+	{{ add_addon_form.hidden_tag() }}
     <table class="table" >
         <thead>
             <tr>
@@ -108,44 +112,18 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td><input type="text" placeholder="0001"/></td>
-                <td><input type="text" placeholder="Tapioca"/></td>
-                <td><input type="text" placeholder="1"/></td>
-                <td><input type="text" placeholder="1.5"/></td>
-                <td><input type="text" placeholder="Yes"/></td>
-                <td><div style="width:90px" ><button type="button">Add item</button></div>
-                </td>
+			<tr>
+                <td>{{ add_addon_form.addonnumber(size=24) }}</td>
+                <td>{{ add_addon_form.description(size=24) }}</td>
+				<td></td>
+                <td>{{ add_addon_form.price(size=24) }}</td>
+                <td>{{ add_addon_form.availability(size=24) }}</td>
+                <td>{{ add_addon_form.submit }}</td>
             </tr>
 
         </tbody>
     </table>
-</div><div class="container">
-    <h2>Add An Add-On Item</h2>
-    <table class="table" >
-        <thead>
-            <tr>
-                <th>Add-On No.</th>
-                <th>Descriptione</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Availability</th>
-                <th>Manage</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td><input type="text" placeholder="0001"/></td>
-                <td><input type="text" placeholder="Tapioca"/></td>
-                <td><input type="text" placeholder="1"/></td>
-                <td><input type="text" placeholder="1.5"/></td>
-                <td><input type="text" placeholder="Yes"/></td>
-                <td><div style="width:90px" ><button type="button">Add item</button></div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
+	</form>
+</div>
 </div>
 {% endblock %}

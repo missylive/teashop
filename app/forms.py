@@ -15,3 +15,25 @@ class MenuItemEditForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     price = DecimalField('Price', validators=[DataRequired()])
     submit = SubmitField('Update Item')
+
+class AddOnEditForm(FlaskForm):
+    addonnumber = IntegerField('Item Number', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    price = DecimalField('Price', validators=[DataRequired()])
+    availability = BooleanField('Availability', validators=[DataRequired()])
+    submit = SubmitField('Update Item')
+
+class MenuItemAddForm(FlaskForm):
+    itemnumber = IntegerField('Item Number', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    drinktype = StringField('Drink Type', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    price = DecimalField('Price', validators=[DataRequired()])
+    submit = SubmitField('Add Item')
+
+class AddOnAddForm(FlaskForm):
+    addonnumber = IntegerField('Item Number', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    price = DecimalField('Price', validators=[DataRequired()])
+    availability = BooleanField('Availability', validators=[DataRequired()])
+    submit = SubmitField('Add Item')

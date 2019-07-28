@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect
 from app import app
 from app import db
-from app.forms import LoginForm, MenuItemEditForm
+from app.forms import LoginForm, MenuItemEditForm, MenuItemAddForm, AddOnEditForm, AddOnAddForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Employee, MenuItem, AddOnItem
 
@@ -17,11 +17,25 @@ def menu():
 def addonitem():
     addon_list = AddOnItem.query.all()
     return render_template('addon.html', title='Menu', addon_list=addon_list)
-@app.route('/mgmt')
+@app.route('/mgmt', methods=['GET', 'POST'])
 def mgmt():
+    add_menu_form = MenuItemAddForm()
+    add_addon_form = AddOnAddForm()
+    if add_menu_form.validate_on_submit():
+        add_item = MenuItem(menu_item_number=add_menu_form.itemnumber.data, item_name=add_menu_form.name.data, price=add_menu_form.price.data, drink_type=add_menu_form.drinktype.data, drink_description=add_menu_form.description.data)
+        db.session.add(add_item)
+        db.session.commit()
+        flash('Menu item added successfully.')
+        return redirect('/mgmt')
+    if add_addon_form.validate_on_submit():
+        add_item = AddOnItem(add_on_number=add_addon_form.addonnumber.data, food_description=add_addon_form.description.data, price=add_addon_form.price.data, foodstatus=add_addon_form.availability.data)
+        db.session.add(add_item)
+        db.session.commit()
+        flash('Add on item added successfully.')
+        return redirect('/mgmt')
     item_list = MenuItem.query.all()
     addon_list = AddOnItem.query.all()
-    return render_template('mgmt.html', title='Management', item_list=item_list, addon_list=addon_list)
+    return render_template('mgmt.html', title='Management', item_list=item_list, addon_list=addon_list, add_menu_form=add_menu_form, add_addon_form=add_addon_form)
 @app.route('/menu/<menu_item_number>', methods=['GET', 'POST'])
 @login_required
 def menuitem(menu_item_number):
@@ -38,12 +52,21 @@ def menuitem(menu_item_number):
     item_list = MenuItem.query.all()
     menu_item = MenuItem.query.filter_by(menu_item_number=menu_item_number).first_or_404()
     return render_template('mgmtmenu.html', menu_item=menu_item, item_list=item_list, form=form)
-@app.route('/addon/<add_on_number>')
+@app.route('/addon/<add_on_number>', methods=['GET', 'POST'])
 @login_required
 def addonitemmgmt(add_on_number):
+    form = AddOnEditForm()
+    if form.validate_on_submit():
+        edit_item = AddOnItem.query.filter_by(add_on_number=add_on_number).first()
+        edit_item.food_description = form.description.data
+        edit_item.price = form.price.data
+        edit_item.foodstatus = form.availability.data
+        db.session.commit()
+        flash('Add on item edited successfully.')
+        return redirect('/mgmt')
     addon_list = AddOnItem.query.all()
     addon_item = AddOnItem.query.filter_by(add_on_number=add_on_number).first_or_404()
-    return render_template('mgmtaddon.html', addon_list=addon_list, addon_item=addon_item)
+    return render_template('mgmtaddon.html', addon_list=addon_list, addon_item=addon_item, form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
