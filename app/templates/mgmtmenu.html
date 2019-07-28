@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+        <h2>Manage The Item</h2>
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>Item No.</th>
+                    <th>Name</th>
+                    <th>Drink Type</th>
+                    <th>Descriptione</th>
+                    <th>Price</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+				<tr>
+                <td>{{ menu_item.menu_item_number }}</td>
+                <td>{{ menu_item.item_name }}</td>
+                <td>{{ menu_item.drink_type }}</td>
+                <td>{{ menu_item.drink_description }}</td>
+                <td>{{ menu_item.price }}</td>
+				</tr>
+                <tr>
+                    <td><input type="text" placeholder="item number"/></td>
+                    <td><input type="text" placeholder="food name"/></td>
+                    <td><input type="text" placeholder="drink type"/></td>
+                    <td><input type="text" placeholder="ingredients"/></td>
+                    <td><input type="text" placeholder="price"/></td>
+                    <td><div style="width:90px" ><button type="button">Update Item</button></div>
+                    </td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
