@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect
 from app import app
 from app import db
-from app.forms import LoginForm
+from app.forms import LoginForm, MenuItemEditForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Employee, MenuItem, AddOnItem
 
@@ -22,12 +22,22 @@ def mgmt():
     item_list = MenuItem.query.all()
     addon_list = AddOnItem.query.all()
     return render_template('mgmt.html', title='Management', item_list=item_list, addon_list=addon_list)
-@app.route('/menu/<menu_item_number>')
+@app.route('/menu/<menu_item_number>', methods=['GET', 'POST'])
 @login_required
 def menuitem(menu_item_number):
+    form = MenuItemEditForm()
+    if form.validate_on_submit():
+        edit_item = MenuItem.query.filter_by(menu_item_number=menu_item_number).first()
+        edit_item.item_name = form.name.data
+        edit_item.price = form.price.data
+        edit_item.drink_type = form.drinktype.data
+        edit_item.drink_description = form.description.data
+        db.session.commit()
+        flash('Menu item edited successfully.')
+        return redirect('/mgmt')
     item_list = MenuItem.query.all()
     menu_item = MenuItem.query.filter_by(menu_item_number=menu_item_number).first_or_404()
-    return render_template('mgmtmenu.html', menu_item=menu_item, item_list=item_list)
+    return render_template('mgmtmenu.html', menu_item=menu_item, item_list=item_list, form=form)
 @app.route('/addon/<add_on_number>')
 @login_required
 def addonitemmgmt(add_on_number):

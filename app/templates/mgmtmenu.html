@@ -2,6 +2,8 @@
 {% block content %}
 <div class="container">
         <h2>Manage The Item</h2>
+		<form action="" method="post">
+			{{ form.hidden_tag() }}
         <table class="table" >
             <thead>
                 <tr>
@@ -22,6 +24,7 @@
                 <td>{{ menu_item.drink_description }}</td>
                 <td>{{ menu_item.price }}</td>
 				</tr>
+				<!--
                 <tr>
                     <td><input type="text" placeholder="item number"/></td>
                     <td><input type="text" placeholder="food name"/></td>
@@ -31,8 +34,17 @@
                     <td><div style="width:90px" ><button type="button">Update Item</button></div>
                     </td>
                 </tr>
-    
+				-->
+				<tr>
+					<td>{{ form.itemnumber(size=24) }}</td>
+					<td>{{ form.name(size=24) }}</td>
+					<td>{{ form.drinktype(size=24) }}</td>
+					<td>{{ form.description(size=24) }}</td>
+					<td>{{ form.price(size=24) }}</td>
+					<td>{{ form.submit }}</td>
+				</tr> 
             </tbody>
         </table>
+		</form>
     </div>
 {% endblock %}
