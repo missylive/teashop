@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+        <h2>Manage The Item</h2>
+        <table class="table" >
+            <thead>
+                <tr>
+					<th>Add-On No.</th>
+                    <th>Descriptione</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+				<tr>
+                <td>{{ addon_item.add_on_number }}</td>
+                <td>{{ addon_item.food_description }}</td>
+                <td></td>
+                <td>{{ addon_item.price }}</td>
+                <td>{{ addon_item.foodstatus }}</td>
+                <tr>
+                    <td><input type="text" placeholder="item number"/></td>
+                    <td><input type="text" placeholder="food name"/></td>
+                    <td><input type="text" placeholder="drink type"/></td>
+                    <td><input type="text" placeholder="ingredients"/></td>
+                    <td><input type="text" placeholder="price"/></td>
+                    <td><div style="width:90px" ><button type="button">Update Item</button></div>
+                    </td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

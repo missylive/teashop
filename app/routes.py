@@ -22,13 +22,18 @@ def mgmt():
     item_list = MenuItem.query.all()
     addon_list = AddOnItem.query.all()
     return render_template('mgmt.html', title='Management', item_list=item_list, addon_list=addon_list)
-@app.route('/<menu_item_number>')
+@app.route('/menu/<menu_item_number>')
 @login_required
 def menuitem(menu_item_number):
     item_list = MenuItem.query.all()
     menu_item = MenuItem.query.filter_by(menu_item_number=menu_item_number).first_or_404()
     return render_template('mgmtmenu.html', menu_item=menu_item, item_list=item_list)
 @app.route('/addon/<add_on_number>')
+@login_required
+def addonitemmgmt(add_on_number):
+    addon_list = AddOnItem.query.all()
+    addon_item = AddOnItem.query.filter_by(add_on_number=add_on_number).first_or_404()
+    return render_template('mgmtaddon.html', addon_list=addon_list, addon_item=addon_item)
 
 
 @app.route('/login', methods=['GET', 'POST'])

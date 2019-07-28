@@ -28,7 +28,7 @@
 				<td>{{ menu_item.drink_description }}</td>
 				<td>{{ menu_item.price }}</td>
                 <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
+						<div role="menu" class="dropdown-menu"><a role="presentation" href="/menu/{{ menu_item.menu_item_number }}" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
 </div>
                 </td>
             </tr>
@@ -86,7 +86,7 @@
                 <td>{{ addon_item.price }}</td>
                 <td>{{ addon_item.foodstatus }}</td>
                 <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-    <div role="menu" class="dropdown-menu"><a role="presentation" href="manage_menu_item.html" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
+						<div role="menu" class="dropdown-menu"><a role="presentation" href="/addon/{{ addon_item.add_on_number }}" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
 </div>
                 </td>
             </tr>
