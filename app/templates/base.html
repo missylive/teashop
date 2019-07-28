@@ -19,7 +19,7 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-            <div class="container"><a class="navbar-brand" href="index.html">Tea Shop&nbsp;</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="/index">Tea Shop&nbsp;</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div
                     class="collapse navbar-collapse" id="navcol-1">
 					<ul class="nav navbar-nav ml-auto">
@@ -50,11 +50,15 @@
         <footer>
             <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="index.html">Home</a></li>
-                <li class="list-inline-item"><a href="menu.html">Menu</a></li>
+                <li class="list-inline-item"><a href="/index">Home</a></li>
+                <li class="list-inline-item"><a href="/menu">Menu</a></li>
                 <li class="list-inline-item"><a href="#">About Us</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="login.html">Login</a></li>
+                {% if current_user.is_anonymous %}
+                <li class="list-inline-item"><a href="/login">Log In</a>
+                {% else %}
+                <li class="list-inline-item"><a href="/logout">Log Out</a>
+                {% endif %}
             </ul>
             <p class="copyright">Tea Shop © 2019</p>
         </footer>
