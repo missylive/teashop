@@ -20,6 +20,9 @@ def addonitem():
 @app.route('/order')
 def order():
     order_list = DrinkOrder.query.all()
+    item_list1 = OrderItem.query.filter_by(order_number=1)
+    item_list2 = OrderItem.query.filter_by(order_number=2)
+    item_list3 = OrderItem.query.filter_by(order_number=3)
 #    menu_item_list = OrderItem.query.filter_by(order_number=order_number)
     return render_template('order.html', title='Orders', order_list=order_list)
 @app.route('/mgmt', methods=['GET', 'POST'])

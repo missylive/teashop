@@ -39,7 +39,7 @@ class MenuItem(db.Model):
 
 class AddOnItem(db.Model):
     add_on_number = db.Column(db.Integer, primary_key = True)
-    food_description = db.Column(db.String(128))
+    food_description = db.Column(db.String(128), index = True)
     price = db.Column(db.Numeric)
     foodstatus = db.Column(db.Boolean)
 
@@ -48,8 +48,8 @@ class AddOnItem(db.Model):
 
 class DrinkOrder(db.Model):
     order_number = db.Column(db.Integer, primary_key = True)
-    menu_items = db.relationship('OrderItem', backref='drinkorder', lazy=True)
-#    addon_items = db.relationship('OrderItem', backref='drinkorder', lazy=True)
+    menu_items = db.relationship('OrderItem', backref='menuitems', lazy=True)
+    addon_items = db.relationship('OrderItem', backref='addonitems', lazy=True)
     order_time = db.Column(db.DateTime)
     order_date = db.Column(db.DateTime)
     order_type = db.Column(db.String(128))
@@ -62,7 +62,7 @@ class OrderItem(db.Model):
     order_number = db.Column(db.Integer, db.ForeignKey('drink_order.order_number'), nullable=False, primary_key = True)
 #    menu_item_number = db.Column(db.Integer, db.ForeignKey('menu_item.menu_item_number'), nullable=False, primary_key = True)
     employee_id = db.Column(db.Integer, db.ForeignKey('employee.employee_id'), nullable=False)
-    add_on_number = db.Column(db.Integer, db.ForeignKey('add_on_item.add_on_number'), nullable=True)
+    food_description = db.Column(db.String(128), db.ForeignKey('add_on_item.food_description'), nullable=True)
     menu_item_name = db.Column(db.String(128), db.ForeignKey('menu_item.item_name'), nullable=False, primary_key = True)
     def __repr__(self):
-        return self.menu_item_name
+        return '{} with {}'.format(self.menu_item_name, self.food_description)
