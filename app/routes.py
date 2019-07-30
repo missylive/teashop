@@ -3,7 +3,7 @@ from app import app
 from app import db
 from app.forms import LoginForm, MenuItemEditForm, MenuItemAddForm, AddOnEditForm, AddOnAddForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import Employee, MenuItem, AddOnItem
+from app.models import Employee, MenuItem, AddOnItem, DrinkOrder, OrderItem
 
 @app.route('/')
 @app.route('/index')
@@ -17,6 +17,11 @@ def menu():
 def addonitem():
     addon_list = AddOnItem.query.all()
     return render_template('addon.html', title='Menu', addon_list=addon_list)
+@app.route('/order')
+def order():
+    order_list = DrinkOrder.query.all()
+#    menu_item_list = OrderItem.query.filter_by(order_number=order_number)
+    return render_template('order.html', title='Orders', order_list=order_list)
 @app.route('/mgmt', methods=['GET', 'POST'])
 def mgmt():
     add_menu_form = MenuItemAddForm()

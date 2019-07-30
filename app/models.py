@@ -45,3 +45,24 @@ class AddOnItem(db.Model):
 
     def __repr__(self):
         return '<Add On Item {}>'.format(self.add_on_number)
+
+class DrinkOrder(db.Model):
+    order_number = db.Column(db.Integer, primary_key = True)
+    menu_items = db.relationship('OrderItem', backref='drinkorder', lazy=True)
+#    addon_items = db.relationship('OrderItem', backref='drinkorder', lazy=True)
+    order_time = db.Column(db.DateTime)
+    order_date = db.Column(db.DateTime)
+    order_type = db.Column(db.String(128))
+    discount = db.Column(db.Numeric)
+    tax = db.Column(db.Numeric)
+    tips = db.Column(db.Numeric)
+    notes = db.Column(db.String(128))
+
+class OrderItem(db.Model):
+    order_number = db.Column(db.Integer, db.ForeignKey('drink_order.order_number'), nullable=False, primary_key = True)
+#    menu_item_number = db.Column(db.Integer, db.ForeignKey('menu_item.menu_item_number'), nullable=False, primary_key = True)
+    employee_id = db.Column(db.Integer, db.ForeignKey('employee.employee_id'), nullable=False)
+    add_on_number = db.Column(db.Integer, db.ForeignKey('add_on_item.add_on_number'), nullable=True)
+    menu_item_name = db.Column(db.String(128), db.ForeignKey('menu_item.item_name'), nullable=False, primary_key = True)
+    def __repr__(self):
+        return self.menu_item_name
