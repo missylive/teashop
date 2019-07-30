@@ -2,24 +2,23 @@
 
 {% block content %}
 <div>
-        <div class="container">
-            <h1>Manage menu and add-on</h1>
-        </div>
-    </div><div style="width=80%" class="container">
-    <h2>Edit or Delete Menu Items</h2>
-    <table class="table" >
-        <thead>
-            <tr>
+    <div class="container">
+        <h1>Manage menu and add-on</h1>
+		<div style="width=90%" class="container">
+		<h2>Edit or Delete Menu Items</h2>
+		<table class="table" >
+			<thead>
+				<tr>
                 <th>Item No.</th>
                 <th>Name</th>
                 <th>Drink Type</th>
                 <th>Descriptione</th>
                 <th>Price</th>
                 <th>manage</th>
-            </tr>
-        </thead>
+				</tr>
+			</thead>
 
-        <tbody>
+			<tbody>
 			{% for menu_item in item_list %}
             <tr>
 				<td>{{ menu_item.menu_item_number }}</td>
@@ -28,14 +27,16 @@
 				<td>{{ menu_item.drink_description }}</td>
 				<td>{{ menu_item.price }}</td>
                 <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-						<div role="menu" class="dropdown-menu"><a role="presentation" href="/menu/{{ menu_item.menu_item_number }}" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
+						<div role="menu" class="dropdown-menu"><a role="presentation" href="/menu/{{ menu_item.menu_item_number }}" class="dropdown-item">Edit</a><a role="presentation" href="/deleteitem/{{ menu_item.menu_item_number }}" class="dropdown-item">Delete</a></div>
 </div>
                 </td>
             </tr>
 			{% endfor %}
-        </tbody>
-    </table>
-</div><div class="container">
+			</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="container">
     <h2>Add A New Menu Item</h2>
 	<form action="" method="post">
 	{{ add_menu_form.hidden_tag() }}
@@ -64,7 +65,9 @@
         </tbody>
     </table>
 	</form>
-</div><div style="width=80%" class="container">
+	</div>
+	<div class="container">
+		<div style="width=90%" class="container">
     <h2>Edit or Delete Add-On Items</h2>
     <table class="table" >
         <thead>
@@ -88,14 +91,15 @@
                 <td>{{ addon_item.price }}</td>
                 <td>{{ addon_item.foodstatus }}</td>
                 <td><div style="width:100px" ><button data-toggle="dropdown" aria-expanded="false" type="button">Manage</button>
-						<div role="menu" class="dropdown-menu"><a role="presentation" href="/addon/{{ addon_item.add_on_number }}" class="dropdown-item">Edit</a><a role="presentation" href="#" class="dropdown-item">Delete</a></div>
-</div>
+						<div role="menu" class="dropdown-menu"><a role="presentation" href="/addon/{{ addon_item.add_on_number }}" class="dropdown-item">Edit</a><a role="presentation" href="/deleteaddon/{{ addon_item.add_on_number }}" class="dropdown-item">Delete</a></div>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>
-</div><div class="container">
+	    </table>
+		</div>
+	</div>
+	<div class="container">
     <h2>Add An Add-On Item</h2>
 	<form action="" method="post">
 	{{ add_addon_form.hidden_tag() }}
@@ -124,6 +128,6 @@
         </tbody>
     </table>
 	</form>
-</div>
+	</div>
 </div>
 {% endblock %}

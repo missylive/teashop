@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect
 from app import app
 from app import db
-from app.forms import LoginForm, MenuItemEditForm, MenuItemAddForm, AddOnEditForm, AddOnAddForm
+from app.forms import LoginForm, MenuItemEditForm, MenuItemAddForm, AddOnEditForm, AddOnAddForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Employee, MenuItem, AddOnItem
 
@@ -89,3 +89,31 @@ def login():
 def logout():
     logout_user()
     return redirect('/index')
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect('/index')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        employee = Employee(employee_id=form.userid.data, employee_name=form.name.data, phone=form.phone.data, password=form.password.data)
+        employee.set_password(form.password.data)
+        db.session.add(employee)
+        db.session.commit()
+        flash('Registration successful.')
+        return redirect('/login')
+    return render_template('register.html', title='Register', form=form)
+
+@app.route('/deleteitem/<menu_item_number>')
+def deleteitem(menu_item_number):
+    menu_item = MenuItem.query.filter_by(menu_item_number=menu_item_number).first()
+    db.session.delete(menu_item)
+    db.session.commit()
+    flash('Item deleted successfully.')
+    return redirect('/mgmt')
+@app.route('/deleteaddon/<add_on_number>')
+def deleteaddon(add_on_number):
+    addon_item = AddOnItem.query.filter_by(add_on_number=add_on_number).first()
+    db.session.delete(addon_item)
+    db.session.commit()
+    flash('Item deleted successfully.')
+    return redirect('/mgmt')
